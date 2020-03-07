@@ -21,7 +21,7 @@ While memes are fun and easy to dismiss, they are a force in pop culture. Combin
 ## Technologies
 
 <li>REACT</li>
-<li>MATERIAL UI</li>
+<li>Material UI</li>
 <li>SASS</li>
 <li>NodeJs</li>
 <li>Express</li>
@@ -41,7 +41,7 @@ If you would like to donate (not real money, this is a proof of concept, no cred
 
 ## Future Improvements
 
-<li>SASS, CSS Animations</li>
+<li>CSS Animations</li>
 <li>Native CSS Carousel</li>
 <li>Upgrade/Create PWA version</li>
 <li>Accessibility Check (contrast, sizing), Improve responsivity</li>
