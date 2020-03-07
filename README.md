@@ -21,6 +21,8 @@ While memes are fun and easy to dismiss, they are a force in pop culture. Combin
 ## Technologies
 
 <li>REACT</li>
+<li>MATERIAL UI</li>
+<li>SASS</li>
 <li>NodeJs</li>
 <li>Express</li>
 <li>Sequelize</li>
