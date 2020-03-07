@@ -1,9 +1,41 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Input } from "../../components/Form";
 import Navbar from "../../components/Navbar";
-import "./style.css";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
 import axios from "axios";
 
+const styles = theme => ({
+  root: {
+    display: "flex"
+  },
+
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3)
+  },
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  },
+  heroContent: {
+    padding: theme.spacing(3, 0, 6)
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(1)
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2)
+  }
+});
+
+// const { classes } = props;
 class Login extends Component {
   state = {
     username: "",
@@ -46,61 +78,101 @@ class Login extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     console.log(this.state);
-    axios.post("/auth/loginUser", this.state).then(res => {
-      localStorage.setItem("JWT", res.data.token);
-      localStorage.setItem("email", res.data.username);
-      localStorage.setItem("userId", res.data.userId);
-    });
-    this.props.history.push("/Swaddle");
+    axios
+      .post("/auth/loginUser", this.state)
+      .then(res => {
+        localStorage.setItem("JWT", res.data.token);
+        localStorage.setItem("email", res.data.username);
+        localStorage.setItem("firstName", res.data.firstName);
+        localStorage.setItem("userId", res.data.userId);
+      })
+      .then(() => {
+        const userName = localStorage.getItem("email");
+        const name_local = localStorage.getItem("firstName");
+
+        this.setState({ userName, name_local });
+      });
+    // this.props.history.push("/Swaddle");
   };
   render = () => {
+    const { classes } = this.props;
     return (
-      <div className="main-swaddle-container">
-        <div className="login-container">
-          <Navbar className="navbar" />
-          <h1 className="login">LOGIN</h1>
-          <div className="logo-wrapper">
-            <img
-              className="mainlogo"
-              src={
-                process.env.PUBLIC_URL +
-                "/assets/images/icons/swaddles_for_waddles_logo.png"
-              }
-            />
-          </div>
-          <form>
-            <Input
-              value={this.state.username}
-              changeHandler={this.handleInputChange}
-              name="username"
-              placeholder="Email (required)"
-            />
-            <Input
-              value={this.state.password}
-              changeHandler={this.handleInputChange}
-              name="password"
-              placeholder="Password (required)"
-              type="password"
-            />
+      <>
+        <div className={classes.root}>
+          <header>
+            <Navbar />
+            <h3>
+              {this.state.name_local ? (
+                <h3>Hello {this.state.name_local}!</h3>
+              ) : (
+                <a href="/Login ">Please Login</a>
+              )}
+            </h3>
+          </header>
+          <main className={classes.content}>
+            {/* Hero unit */}
+            <div className={classes.heroContent}>
+              <Container maxWidth="sm">
+                <div className="logo">
+                  <img
+                    src={
+                      process.env.PUBLIC_URL +
+                      "/assets/images/icons/swaddles_for_waddles_logo_sm.png"
+                    }
+                  />
+                </div>
+                <Typography
+                  variant="h2"
+                  align="center"
+                  color="textSecondary"
+                  paragraph
+                >
+                  Login
+                </Typography>
+              </Container>
+            </div>
+            {/* End hero unit */}
+            <Container>
+              {/* <Container maxWidth="xs"> */}
 
-            <button
-              onClick={this.handleFormSubmit}
-              // disabled={!(this.state.author && this.state.title)}
-            >
-              Login
-            </button>
-          </form>
-
-          <p className="suggestion">
-            Don't have an account? Register <a href="/register">here</a>
-          </p>
+              <div className={classes.paper}>
+                <form className={classes.form} noValidate>
+                  <Input
+                    value={this.state.username}
+                    changeHandler={this.handleInputChange}
+                    name="username"
+                    placeholder="Email (required)"
+                  />
+                  <Input
+                    value={this.state.password}
+                    changeHandler={this.handleInputChange}
+                    name="password"
+                    placeholder="Password (required)"
+                    type="password"
+                  />
+                  <div className="text-center">
+                    <Button
+                      variant="outlined"
+                      size="large"
+                      style={{ marginBottom: "2em" }}
+                      onClick={this.handleFormSubmit}
+                      // disabled={!(this.state.author && this.state.title)}
+                    >
+                      Login
+                    </Button>
+                    <br />
+                    <Link to="/Register" variant="body2">
+                      {"Don't have an account? Sign Up"}
+                    </Link>
+                  </div>
+                </form>
+              </div>
+            </Container>
+          </main>
         </div>
-        <div className="swaddle-text">
-          <h1 className="swaddleee">SWADDLES FOR WADDLES</h1>
-        </div>
-      </div>
+      </>
     );
   };
 }
-
-export default Login;
+// export default withStyles(styles)(HigherOrderComponent);
+export default withStyles(styles)(Login);

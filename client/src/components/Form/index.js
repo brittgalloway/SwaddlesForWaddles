@@ -1,9 +1,12 @@
 import React from "react";
+import TextField from "@material-ui/core/TextField";
 
 export function Input(props) {
   return (
     <div className="form-group">
-      <input
+      <TextField
+        id="standard-basic"
+        label={props.label}
         className="form-control"
         name={props.name}
         value={props.value}
@@ -14,7 +17,7 @@ export function Input(props) {
     </div>
   );
 }
-//MAY NOT NEED
+
 export function FormSubmit(props) {
   return (
     <button

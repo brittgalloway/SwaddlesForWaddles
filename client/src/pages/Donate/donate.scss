@@ -1,0 +1,41 @@
+$powderBlue: #4c6d9d;
+$cotton: #99ced4;
+$blush: #ee8687;
+$smoke: #6e7376;
+
+.bttn {
+  font-size: 1.25em;
+  color: $smoke;
+  &:hover {
+    color: $smoke;
+  }
+}
+#background {
+  position: fixed;
+}
+span {
+  position: relative;
+}
+a {
+  color: $powderBlue;
+  &:hover {
+    color: $blush;
+    text-decoration: none;
+  }
+}
+h3 {
+  color: $powderBlue;
+}
+.logo {
+  width: 146px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button {
+  padding-bottom: 3em;
+}
+
+.swaddled {
+  padding-top: 3em;
+}

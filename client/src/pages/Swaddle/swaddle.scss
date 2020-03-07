@@ -1,0 +1,44 @@
+$powderBlue: #4c6d9d;
+$cotton: #99ced4;
+$blush: #ee8687;
+$smoke: #6e7376;
+
+.MuiFormControl-root {
+  background: transparent;
+}
+body {
+  background: linear-gradient(180.56deg, $cotton 0.67%, white 99.32%);
+  background-repeat: no-repeat;
+}
+#preview {
+  border-color: $powderBlue;
+  border-style: solid;
+  border-width: 0.5em;
+  width: 40%;
+}
+#expansion {
+  background: transparent;
+}
+.clickalbeIMG {
+  width: 100px;
+  border: none;
+  &:hover {
+    border-color: $smoke;
+    border-width: 0.3em;
+    border-style: solid;
+  }
+  &:active {
+    border-color: $blush;
+    border-width: 0.3em;
+    border-style: solid;
+  }
+}
+
+.form-group {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+label {
+  color: white;
+}

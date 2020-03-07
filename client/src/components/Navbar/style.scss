@@ -1,0 +1,38 @@
+$powderBlue: #4c6d9d;
+$cotton: #99ced4;
+$blush: #ee8687;
+$smoke: #6e7376;
+
+.navbar {
+  height: 60%;
+  width: 13em;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: $blush;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 2em;
+  font-size: medium;
+  a {
+    color: white;
+  }
+}
+.hamburger {
+  color: $powderBlue;
+  z-index: 1;
+  font-size: 3em;
+  &:hover {
+    color: $blush;
+  }
+}
+
+@media screen and (max-height: 450px) {
+  .navbar {
+    padding-top: 15px;
+  }
+  .navbar a {
+    font-size: 18px;
+  }
+}
